@@ -4,7 +4,7 @@ Web scraper for https://disboard.org, which allows you to search for multiple ta
 ![Presentation of program](Presentation/console_1.gif)
 
 # Step-by-step:
-0. Launch scrapsearch.py, there are a lot of ways to launch python file. My method is just moving to the source folder of the file and typing "python <file_name>.py" (additionally you can launch this program with command line parameters).
+0. Launch scrapsearch.py, there are a lot of ways to launch a python file. My method is just moving to the source folder of the file and typing "python <file_name>.py" (additionally you can launch this program with command line parameters).
 1. Firstly, as a search query, write type (server's main topic) of server you want to find (for example, if you want to play Among Us then type "Among Us", if you want to find servers with programming as a main topic then type "programming").
 2. Then, you will know how many pages are there to scrap from. Every page contains 24 servers. Type number or leave it empty if you want to search for every single page.
 3. After that, you can enter tags you want to search. Tags are like these: ![Tags presentation](Presentation/tags.png). They are like server's secondary topic/s. But, if you want to search for servers with only specific flag without adding tags leave the field empty.
