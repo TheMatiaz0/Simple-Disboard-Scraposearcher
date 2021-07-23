@@ -107,7 +107,7 @@ def mainLoop():
     global currentTime
     currentTime = datetime.today().strftime('(%Y-%m-%d) (%H-%M-%S)')
     print("=========================")
-    print("Enter your search result:")
+    print("Enter your search query:")
     keyword = input()
 
     if keyword == "":
