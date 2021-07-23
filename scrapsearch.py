@@ -21,7 +21,8 @@ def detailedSearch(keyword, numberOfPages, tagArray, flag, rule="OR"):
         print("=========================================================================")
         print(f"Searching for servers on page {numberOfPage}... (Press CTRL+C to interrupt)")
         try:
-            found = searchForServerAtPage(keyword, numberOfPage, tagArray, flag, rule)
+            if found is not True:
+                found = searchForServerAtPage(keyword, numberOfPage, tagArray, flag, rule)
             time.sleep(2)
         except KeyboardInterrupt:
             print('\n\n==================================================')
@@ -62,7 +63,7 @@ def searchForServerAtPage(keyword, numPage, tagArray, flags, rule="OR"):
                 correctFlag = serverDetail.find("span", f"flag-icon-{flag}")
                 if correctFlag is not None:
                     break
-            if rule.lower() == "and":
+            if rule.lower() == "or" and correctFlag is not None:
                 printResult(serverDetail, keyword)
                 found = True
                 continue
@@ -77,7 +78,7 @@ def searchForServerAtPage(keyword, numPage, tagArray, flags, rule="OR"):
                         correctTag = readyTag
                         break
 
-        if correctFlag is not None or correctTag is not None:
+        if correctFlag is not None and correctTag is not None:
             printResult(serverDetail, keyword)
             found = True
     return found
@@ -114,7 +115,7 @@ def mainLoop():
         return
 
     numberOfPages = getNumberOfPages(keyword, 1)
-    print(f"Found {numberOfPages} pages. How many pages do you want to crawl? (Enter exact number or leave it empty "
+    print(f"Found {numberOfPages} pages. How many pages do you want to scrap? (Enter exact number or leave it empty "
           f"to search every page).")
     howMany = input()
 
@@ -128,7 +129,7 @@ def mainLoop():
     flags = input()
 
     print("Enter 'or' to search for servers with flags OR tags or enter 'and' to search for servers with flags AND "
-          "tags (if you leave it empty it will search with 'or')"
+          "tags (if you leave it empty it will search with 'or'):"
           )
     rule = input()
     if rule == "":
